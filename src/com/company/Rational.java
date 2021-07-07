@@ -32,28 +32,11 @@ class Rational
 
     private static long gcd(long a, long b)
     {
-        return gcdHelper(Math.abs(a), Math.abs(b));
+        a = Math.abs(a);
+        b = Math.abs(b);
+        return b == 0 ? a : gcd(b, a % b);
     }
-
-    private static long gcdHelper(long a, long b)
-    {
-        while (true)
-        {
-            if (a == 0)
-                return b;
-            if (b == 0)
-                return a;
-
-            if (a == b)
-                return a;
-
-            if (a > b)
-                a = a - b;
-            else
-                b = b - a;
-        }
-    }
-
+    
     Rational(){}
 
     Rational(long a, long b)
